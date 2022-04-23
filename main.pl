@@ -13,7 +13,14 @@
 #
 
 #Def de funciones
-crearCarta1(carta1).
-crearCartaN(cartaN).
+elemento("0").
+elemento("a").
+elemento("b").
+elemento("c").
+elemento("d").
+
+#Reglas
+crearCarta1("A" "B" "C" "D"):-
+crearCartaN("cartaN"):-
 
 #No sé usar esto, ayuda
