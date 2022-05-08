@@ -12,7 +12,7 @@
 % set_prolog_flag(answer_write_options,[max_depth(0)]). true.
 
 % Importamos los otros archivos, creo.
-% consult(baseDeDatos.pl).
+% ["baseDeDatos.pl"].
 % consult(tda-cardset.pl).
 % consult(tda-game.pl).
 
@@ -24,18 +24,18 @@
 %Reglas
 % cards():-
 
-addElemento1( Elemento, [], [Elemento])
-addElemento1( Elemento, [C|R], [C|L]):-
-    A is Elemento.
+%EJEMPLO DE USO:  addElemento1(3, [1, 2, 4], X).
+addElemento1(Elemento, [], [Elemento]):- !.
+addElemento1(Elemento, [C|R], [C|L]):-
+    A is Elemento,
     addElemento1( A, R, L). % Donde R es el resto y L es la lista.
 
-crearCarta1( [], 0, _).
-crearCarta1( [PrimE|UltE], numE, cantCartas):- 
-    addElemento1(A,B),
-    Emenos1 is numE -1,
-    PrimE is B.
-
-
+crearCarta1([], 0).
+crearCarta1([CAB|COL], [PrimE|UltE], NumE):-
+    addElemento1(A,[CAB|COL], [H|T]),
+    Emenos1 is NumE -1,
+    crearCarta1([H|T], UltE, Emenos1),
+    PrimE = H.
 
 % crearCartaN("cartaN"):-
 
