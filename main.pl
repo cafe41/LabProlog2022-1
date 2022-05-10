@@ -40,7 +40,8 @@ addElemento1(Elemento, [C|R], [C|L]):-
 %Recursión: No hay
 calcularOrden(MaxC, Orden):-
     R is sqrt(1 - 4*(-1 * MaxC)),
-    (R - 1) / 2.
+    R is R - 1,
+    R is R/2.
 
 %Dominio: list X int X variable
 %Ejemplo de uso: crearCarta1(["a","b","c"], 3, X)
