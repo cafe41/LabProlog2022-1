@@ -55,6 +55,8 @@ crearCarta1([CAB|COL], Orden, [PrimE|UltE]):-
 
 % crearCartaN("cartaN"):-
 
+% crearCartaN2("cartaN2"):-
+
 cardsSet(Elementos, -1, MaxC, rndFn(), CS):- 
     NumE is calcularOrden(MaxC, O),
     cardsSet(Elementos, NumE, MaxC, rndFn(), CS).
