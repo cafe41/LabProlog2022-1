@@ -33,6 +33,15 @@ addElemento1(Elemento, [C|R], [C|L]):-
     A is Elemento,
     addElemento1( A, R, L). % Donde R es el resto y L es la lista.
 
+%calcularOrden(MaxC, Orden).
+%Dominio: int X variable
+%Ejemplo de uso: calcularOrden(7, O).
+%Recorrido: int
+%Recursión: No hay
+calcularOrden(MaxC, Orden):-
+    R is sqrt(1 - 4*(-1 * MaxC)),
+    (R - 1) / 2.
+
 %Dominio: list X int X variable
 %Ejemplo de uso: crearCarta1(["a","b","c"], 3, X)
 %Recorrido: list
@@ -46,7 +55,7 @@ crearCarta1([CAB|COL], Orden, [PrimE|UltE]):-
 % crearCartaN("cartaN"):-
 
 cardsSet(Elementos, -1, MaxC, rndFn(), CS):- 
-    
+    NumE is calcularOrden(MaxC, O),
     cardsSet(Elementos, NumE, MaxC, rndFn(), CS).
 cardsSet(Elementos, NumE, MaxC, rndFn(), CS):-
     orden is NumE-1,
