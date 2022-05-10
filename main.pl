@@ -22,28 +22,34 @@
 %Base de datos
 
 
-%Reglas
-/* 
-cardsSet():- cardsSet()
-cardsSet():-
-    orden is numE-1
-    
-*/
+%REGLAS
 
-%EJEMPLO DE USO:  addElemento1(3, [1, 2, 4], X).
+%Dominio: int X list X variable
+%Ejemplo de uso:  addElemento1(3, [1, 2, 4], X).
+%Recorrido: list
+%Recursión: Natural
 addElemento1(Elemento, [], [Elemento]):- !.
 addElemento1(Elemento, [C|R], [C|L]):-
     A is Elemento,
     addElemento1( A, R, L). % Donde R es el resto y L es la lista.
 
-%Dominio: list X int X variable ("elementos", numE, X) 
+%Dominio: list X int X variable
 %Ejemplo de uso: crearCarta1(["a","b","c"], 3, X)
-%Recorrido: list ([PrimE|UltE])
+%Recorrido: list
 %Recursión: Natural
-crearCarta1([], 0 ,X).
+crearCarta1([], 0, _):- !.
 crearCarta1([CAB|COL], Orden, [PrimE|UltE]):-
     addElemento1(CAB, [PrimE|UltE], X),
     Omenos1 is Orden -1,
-    crearCarta1([H|T], Emenos1, X).
+    crearCarta1([COL], Omenos1, X).
 
 % crearCartaN("cartaN"):-
+
+cardsSet(Elementos, -1, MaxC, rndFn(), CS):- 
+    
+    cardsSet(Elementos, NumE, MaxC, rndFn(), CS).
+cardsSet(Elementos, NumE, MaxC, rndFn(), CS):-
+    orden is NumE-1,
+    crearCarta1(Elementos, orden, X).
+%  crearCartaN().
+%  crearCartaN2(). 
